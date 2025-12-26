@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import Vault from "./components/Vault";
+import LockScreen from "./components/LockScreen";
 
 function App() {
+  const [cryptoKey, setCryptoKey] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        width: cryptoKey ? "90%" : "40%",
+        marginTop: cryptoKey ? "4rem" : "5rem",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+    >
+      {cryptoKey ? (
+        <Vault cryptoKey={cryptoKey} onLock={() => setCryptoKey(null)} />
+      ) : (
+        <LockScreen onUnlock={setCryptoKey} />
+      )}
     </div>
   );
 }
