@@ -11,6 +11,8 @@ A client-side secure vault application built with React that allows users to sto
 git clone <repo-url>
 cd <project-folder>
 
+then npm start 
+
 
 Architectural Decisions
 
